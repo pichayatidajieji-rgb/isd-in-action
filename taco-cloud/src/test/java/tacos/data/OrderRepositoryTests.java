@@ -2,6 +2,7 @@ package tacos.data;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -32,15 +33,15 @@ public class OrderRepositoryTests {
     order.setCcCVV("123");
     Taco taco1 = new Taco();
     taco1.setName("Taco One");
-    taco1.addIngredient(new Ingredient("FLTO", "Flour Tortilla", Type.WRAP));
-    taco1.addIngredient(new Ingredient("GRBF", "Ground Beef", Type.PROTEIN));
-    taco1.addIngredient(new Ingredient("CHED", "Shredded Cheddar", Type.CHEESE));
+    taco1.addIngredient(new Ingredient("FLTO", "Flour Tortilla", Type.WRAP, new BigDecimal("1.50")));
+    taco1.addIngredient(new Ingredient("GRBF", "Ground Beef", Type.PROTEIN, new BigDecimal("2.50")));
+    taco1.addIngredient(new Ingredient("CHED", "Shredded Cheddar", Type.CHEESE, new BigDecimal("1.00")));
     order.addTaco(taco1);
     Taco taco2 = new Taco();
     taco2.setName("Taco Two");
-    taco2.addIngredient(new Ingredient("COTO", "Corn Tortilla", Type.WRAP));
-    taco2.addIngredient(new Ingredient("CARN", "Carnitas", Type.PROTEIN));
-    taco2.addIngredient(new Ingredient("JACK", "Monterrey Jack", Type.CHEESE));
+    taco2.addIngredient(new Ingredient("COTO", "Corn Tortilla", Type.WRAP, new BigDecimal("1.50")));
+    taco2.addIngredient(new Ingredient("CARN", "Carnitas", Type.PROTEIN, new BigDecimal("2.75")));
+    taco2.addIngredient(new Ingredient("JACK", "Monterrey Jack", Type.CHEESE, new BigDecimal("1.00")));
     order.addTaco(taco2);
     
     TacoOrder savedOrder = orderRepo.save(order);
